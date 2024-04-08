@@ -53,4 +53,9 @@ autoplay = "default"
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_0gron")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(1, 0.4)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
