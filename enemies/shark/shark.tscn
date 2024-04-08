@@ -42,15 +42,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gron"]
 size = Vector2(17, 6)
 
-[node name="Shark" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_je0j8")
-autoplay = "default"
+[node name="Shark" type="Area2D"]
 script = ExtResource("2_lxsvi")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_je0j8")
+autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_0gron")
 
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Area2D
 
 const SPEED = 50
 const MOVEMENT_FREQUENCY = 0.15
@@ -10,8 +10,7 @@ func _physics_process(delta):
 	velocity.y = sin(global_position.x * MOVEMENT_FREQUENCY) * MOVEMENTE_AMPLITUDE
 	global_position += velocity * SPEED * delta
 
-
-
-func _on_hitbox_area_entered(area):
-		area.get_parent().queue_free()
+func _on_area_entered(area):
+	if area.is_in_group("PlayerBullet"):
+		area.queue_free()
 		queue_free()

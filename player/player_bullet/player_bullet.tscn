@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://5pdnyfuiltgb" path="res://player/player_bullet/player_bullet.png" id="1_giebi"]
 [ext_resource type="Script" path="res://player/player_bullet/player_bullet.gd" id="2_ve3ll"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb15n"]
+size = Vector2(15, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wraq"]
 atlas = ExtResource("1_giebi")
 region = Rect2(0, 0, 18, 13)
@@ -25,25 +28,22 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb15n"]
-size = Vector2(15, 8)
-
-[node name="PlayerBullet" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_7j03d")
-autoplay = "default"
-frame = 1
-frame_progress = 1.0
-offset = Vector2(-0.5, 0)
+[node name="PlayerBullet" type="Area2D" groups=["PlayerBullet"]]
 script = ExtResource("2_ve3ll")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-5.96046e-07, 7.15256e-07)
 scale = Vector2(0.7, 0.7)
 
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_sb15n")
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_screen_exited"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7j03d")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+offset = Vector2(-0.5, 0)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
