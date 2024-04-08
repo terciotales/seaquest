@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1updr7kctve3"]
+
+[ext_resource type="Texture2D" uid="uid://cs3f6yg1d6q5k" path="res://enemies/shark/shark.png" id="1_yr07r"]
+[ext_resource type="Script" path="res://enemies/shark/shark.gd" id="2_lxsvi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnfs2"]
+atlas = ExtResource("1_yr07r")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcs07"]
+atlas = ExtResource("1_yr07r")
+region = Rect2(22, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qi2ra"]
+atlas = ExtResource("1_yr07r")
+region = Rect2(44, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uewje"]
+atlas = ExtResource("1_yr07r")
+region = Rect2(66, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_je0j8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnfs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcs07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qi2ra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uewje")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Shark" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_je0j8")
+autoplay = "default"
+frame = 3
+frame_progress = 0.722888
+script = ExtResource("2_lxsvi")
