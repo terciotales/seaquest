@@ -20,7 +20,7 @@ Esta versão remasterizada mantém a essência do jogo original, porém com grá
 1. Faça o download do executável para o seu sistema operacional na seção de lançamentos.
 2. Descompacte o arquivo baixado.
 3. Execute o arquivo executável do jogo.
-4. Use as teclas de seta ou AWSD para controlar o submarino.
+4. Use as teclas de seta ou WASD para controlar o submarino.
 5. Resgate todos os mergulhadores que puder enquanto evita os ataques dos inimigos.
 6. Sobreviva o maior tempo possível para alcançar a pontuação mais alta.
 
