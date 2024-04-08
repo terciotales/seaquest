@@ -26,8 +26,15 @@ animations = [{
 }]
 
 [node name="PlayerBullet" type="AnimatedSprite2D"]
-position = Vector2(128, 70)
 sprite_frames = SubResource("SpriteFrames_7j03d")
 autoplay = "default"
+frame = 1
+frame_progress = 1.0
 offset = Vector2(-0.5, 0)
 script = ExtResource("2_ve3ll")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-5.96046e-07, 7.15256e-07)
+scale = Vector2(0.7, 0.7)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_screen_exited"]

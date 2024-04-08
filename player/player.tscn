@@ -40,9 +40,15 @@ animations = [{
 }]
 
 [node name="Player" type="AnimatedSprite2D"]
-position = Vector2(120, 71)
 sprite_frames = SubResource("SpriteFrames_gbv3v")
 autoplay = "default"
 frame = 1
 frame_progress = 0.55528
+offset = Vector2(-1, -2)
 script = ExtResource("2_asyhy")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
