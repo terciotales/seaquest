@@ -1,12 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctighg2vos62y"]
+[gd_scene load_steps=2 format=3 uid="uid://duxhnu755s4pu"]
 
 [ext_resource type="Script" path="res://enemies/enemy_spawner/enemy_spawner.gd" id="1_ljk5b"]
 
-[node name="EnemySpawner" type="Marker2D"]
+[node name="EnemySpawner" type="Node2D"]
 script = ExtResource("1_ljk5b")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="Left" type="Node" parent="."]
+
+[node name="1" type="Marker2D" parent="Left"]
+position = Vector2(-32, 77)
+
+[node name="2" type="Marker2D" parent="Left"]
+position = Vector2(-32, 109)
+
+[node name="3" type="Marker2D" parent="Left"]
+position = Vector2(-32, 141)
+
+[node name="4" type="Marker2D" parent="Left"]
+position = Vector2(-32, 173)
+
+[node name="Right" type="Node" parent="."]
+
+[node name="1" type="Marker2D" parent="Right"]
+position = Vector2(290, 77)
+
+[node name="2" type="Marker2D" parent="Right"]
+position = Vector2(290, 109)
+
+[node name="3" type="Marker2D" parent="Right"]
+position = Vector2(290, 141)
+
+[node name="4" type="Marker2D" parent="Right"]
+position = Vector2(290, 173)
+
+[node name="SpawnEnemyTimer" type="Timer" parent="."]
+wait_time = 5.25
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
