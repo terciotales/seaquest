@@ -3,9 +3,10 @@
 [ext_resource type="Script" path="res://enemies/enemy_spawner/enemy_spawner.gd" id="1_ljk5b"]
 
 [node name="EnemySpawner" type="Node2D"]
+position = Vector2(0, -50)
 script = ExtResource("1_ljk5b")
 
-[node name="Left" type="Node" parent="."]
+[node name="Left" type="Node2D" parent="."]
 
 [node name="1" type="Marker2D" parent="Left"]
 position = Vector2(-32, 77)
@@ -19,7 +20,7 @@ position = Vector2(-32, 141)
 [node name="4" type="Marker2D" parent="Left"]
 position = Vector2(-32, 173)
 
-[node name="Right" type="Node" parent="."]
+[node name="Right" type="Node2D" parent="."]
 
 [node name="1" type="Marker2D" parent="Right"]
 position = Vector2(290, 77)
