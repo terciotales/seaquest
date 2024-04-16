@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends Area2D
 
 # Declara uma variável de velocidade inicialmente parada
 var velocity = Vector2(0, 0)
@@ -10,6 +10,7 @@ const BULLET_OFFSET = 7
 const Bullet = preload("res://player/player_bullet/player_bullet.tscn")
 
 @onready var reaload_timer = $ReloadTimer
+@onready var sprite = $AnimatedSprite2D
 
 func _process(delta):
 	# Define a velocidade horizontal baseada na entrada do jogador
@@ -23,16 +24,16 @@ func _process(delta):
 	velocity = velocity.normalized()
 
 	if velocity.x > 0:  # Verifica se o movimento é para a direita
-		flip_h = false  # Se sim, o sprite se mantém "olhando" para a direita
+		sprite.flip_h = false  # Se sim, o sprite se mantém "olhando" para a direita
 	elif velocity.x < 0:  # Verifica se o movimento é para a esquerda
-		flip_h = true  # Se sim, o sprite "olha" para a esquerda
+		sprite.flip_h = true  # Se sim, o sprite "olha" para a esquerda
 	
 	if Input.is_action_pressed("shoot") and can_shoot == true:
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.global_position = global_position
 		get_tree().current_scene.add_child(bullet_instance)
 		
-		if flip_h == true:
+		if sprite.flip_h == true:
 			bullet_instance.flip_direction()
 			bullet_instance.global_position = global_position - Vector2(BULLET_OFFSET, 0)
 		else:
