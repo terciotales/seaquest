@@ -6,6 +6,7 @@ var can_shoot = true
 
 # Define uma constante de velocidade máxima
 const SPEED = Vector2(125, 90)
+const OXYGEN_DECREASE_SPEED = 2.5
 const BULLET_OFFSET = 7
 const Bullet = preload("res://player/player_bullet/player_bullet.tscn")
 
@@ -41,6 +42,8 @@ func _process(delta):
 		
 		reaload_timer.start()
 		can_shoot = false
+	
+	Global.oxygen_level -= OXYGEN_DECREASE_SPEED * delta
 
 func _physics_process(delta):
 	# Move o objeto no jogo de acordo com sua velocidade e tempo passado

@@ -29,6 +29,7 @@ animations = [{
 }]
 
 [node name="PlayerBullet" type="Area2D" groups=["PlayerBullet"]]
+z_index = -1
 script = ExtResource("2_ve3ll")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

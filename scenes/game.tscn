@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://nehnqq4134lk"]
+[gd_scene load_steps=7 format=3 uid="uid://nehnqq4134lk"]
 
 [ext_resource type="PackedScene" uid="uid://cn3abnwtjmvcr" path="res://player/player.tscn" id="1_ywnl7"]
 [ext_resource type="PackedScene" uid="uid://whdh54kf8ygb" path="res://user_interface/people-count/people_count.tscn" id="3_hv08h"]
 [ext_resource type="PackedScene" uid="uid://duxhnu755s4pu" path="res://enemies/enemy_spawner/enemy_spawner.tscn" id="3_xgcse"]
+[ext_resource type="Texture2D" uid="uid://dlvnyowb68qc" path="res://user_interface/oxygen-bar/oxygen_bar_under.png" id="4_rwwjl"]
+[ext_resource type="Texture2D" uid="uid://cubqor2hmr0sp" path="res://user_interface/oxygen-bar/oxygen_bar_progress.png" id="5_va278"]
+[ext_resource type="Script" path="res://user_interface/oxygen-bar/oxygen_bar.gd" id="6_l5h41"]
 
 [node name="Game" type="Node"]
 
@@ -11,5 +14,20 @@ position = Vector2(129, 71)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_xgcse")]
 
-[node name="PeopleCount" parent="." instance=ExtResource("3_hv08h")]
+[node name="UserInterface" type="CanvasLayer" parent="."]
+
+[node name="PeopleCount" parent="UserInterface" instance=ExtResource("3_hv08h")]
 position = Vector2(10, 11)
+
+[node name="OxygenBar" type="TextureProgressBar" parent="UserInterface"]
+offset_left = 78.0
+offset_top = 126.0
+offset_right = 178.0
+offset_bottom = 135.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
+texture_under = ExtResource("4_rwwjl")
+texture_progress = ExtResource("5_va278")
+script = ExtResource("6_l5h41")
