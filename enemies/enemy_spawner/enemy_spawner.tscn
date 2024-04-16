@@ -38,4 +38,9 @@ position = Vector2(290, 173)
 wait_time = 5.25
 autostart = true
 
+[node name="SpawnPersonTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
 [connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
+[connection signal="timeout" from="SpawnPersonTimer" to="." method="_on_spawn_person_timer_timeout"]
