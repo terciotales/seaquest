@@ -70,3 +70,9 @@ func movement():
 	
 func _on_reload_timer_timeout():
 	can_shoot = true	
+
+func _full_crew_oxygen_refuel():
+	state = "people_refuel"
+
+func _less_people_oxygen_refueç():
+	state = "less_people_refuel"
