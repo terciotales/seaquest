@@ -4,6 +4,8 @@ extends Area2D
 var velocity = Vector2(0, 0)
 var can_shoot = true
 
+var state = "default"
+
 # Define uma constante de velocidade máxima
 const SPEED = Vector2(125, 90)
 const OXYGEN_DECREASE_SPEED = 2.5
@@ -13,12 +15,21 @@ const Bullet = preload("res://player/player_bullet/player_bullet.tscn")
 @onready var reaload_timer = $ReloadTimer
 @onready var sprite = $AnimatedSprite2D
 
+func _ready():
+	GameEvent.connect("full_crew_oxygen_refuel", Callable(self, "_full_crew_oxygen_refuel"))
+	GameEvent.connect("less_people_oxygen_refuel", Callable(self, "_less_people_oxygen_refuel"))
+
 func _process(delta):
-	process_movement_input()
-	direction_follows_input()
-	process_shooting()
-	lose_oxygen()
-	
+	if state == "default":
+		process_movement_input()
+		direction_follows_input()
+		process_shooting()
+		lose_oxygen()	
+
+func _physics_process(delta):
+	if state == "default":
+		movement()
+
 func process_movement_input():
 	# Define a velocidade horizontal baseada na entrada do jogador
 	velocity.x = Input.get_axis("move_left", "move_right")
@@ -56,9 +67,6 @@ func lose_oxygen():
 
 func movement():
 	global_position += velocity * SPEED  * get_physics_process_delta_time()
-
-func _physics_process(delta):
-	movement()
 	
 func _on_reload_timer_timeout():
 	can_shoot = true	
