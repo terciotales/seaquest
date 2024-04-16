@@ -14,6 +14,12 @@ const Bullet = preload("res://player/player_bullet/player_bullet.tscn")
 @onready var sprite = $AnimatedSprite2D
 
 func _process(delta):
+	process_movement_input()
+	direction_follows_input()
+	process_shooting()
+	lose_oxygen()
+	
+func process_movement_input():
 	# Define a velocidade horizontal baseada na entrada do jogador
 	velocity.x = Input.get_axis("move_left", "move_right")
 	# Define a velocidade vertical baseada na entrada do jogador
@@ -24,11 +30,13 @@ func _process(delta):
 	# A velocidade total do objeto permanece constante
 	velocity = velocity.normalized()
 
+func direction_follows_input():
 	if velocity.x > 0:  # Verifica se o movimento é para a direita
 		sprite.flip_h = false  # Se sim, o sprite se mantém "olhando" para a direita
 	elif velocity.x < 0:  # Verifica se o movimento é para a esquerda
 		sprite.flip_h = true  # Se sim, o sprite "olha" para a esquerda
-	
+
+func process_shooting():
 	if Input.is_action_pressed("shoot") and can_shoot == true:
 		var bullet_instance = Bullet.instantiate()
 		bullet_instance.global_position = global_position
@@ -42,12 +50,15 @@ func _process(delta):
 		
 		reaload_timer.start()
 		can_shoot = false
-	
-	Global.oxygen_level -= OXYGEN_DECREASE_SPEED * delta
+
+func lose_oxygen():
+	Global.oxygen_level -= OXYGEN_DECREASE_SPEED * get_process_delta_time()
+
+func movement():
+	global_position += velocity * SPEED  * get_physics_process_delta_time()
 
 func _physics_process(delta):
-	# Move o objeto no jogo de acordo com sua velocidade e tempo passado
-	global_position += velocity * SPEED  * delta  
-
+	movement()
+	
 func _on_reload_timer_timeout():
 	can_shoot = true	
