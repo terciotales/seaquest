@@ -1,63 +1,100 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn3abnwtjmvcr"]
+[gd_scene load_steps=14 format=3 uid="uid://ceuea375huqsw"]
 
-[ext_resource type="Texture2D" uid="uid://b87q5n26ymytw" path="res://player/player.png" id="1_gsxwp"]
-[ext_resource type="Script" path="res://player/player.gd" id="2_asyhy"]
+[ext_resource type="Texture2D" uid="uid://sdr4btf3w50e" path="res://player/player.png" id="1_rnfkm"]
+[ext_resource type="Script" path="res://player/player.gd" id="2_85dhl"]
+[ext_resource type="Texture2D" uid="uid://dr2vrjrlcch73" path="res://player/player_flash.png" id="3_rp6vq"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnuid"]
-atlas = ExtResource("1_gsxwp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1intj"]
+atlas = ExtResource("1_rnfkm")
 region = Rect2(0, 0, 24, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r7s03"]
-atlas = ExtResource("1_gsxwp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3kti"]
+atlas = ExtResource("1_rnfkm")
 region = Rect2(24, 0, 24, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uc1ra"]
-atlas = ExtResource("1_gsxwp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c302o"]
+atlas = ExtResource("1_rnfkm")
 region = Rect2(48, 0, 24, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rvsq"]
-atlas = ExtResource("1_gsxwp")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uo6o"]
+atlas = ExtResource("1_rnfkm")
 region = Rect2(72, 0, 24, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gbv3v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwpaq"]
+atlas = ExtResource("3_rp6vq")
+region = Rect2(0, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0clg"]
+atlas = ExtResource("3_rp6vq")
+region = Rect2(24, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bqey"]
+atlas = ExtResource("3_rp6vq")
+region = Rect2(48, 0, 24, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3dhr"]
+atlas = ExtResource("3_rp6vq")
+region = Rect2(72, 0, 24, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hnnho"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dnuid")
+"texture": SubResource("AtlasTexture_1intj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r7s03")
+"texture": SubResource("AtlasTexture_k3kti")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uc1ra")
+"texture": SubResource("AtlasTexture_c302o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7rvsq")
+"texture": SubResource("AtlasTexture_6uo6o")
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwpaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0clg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bqey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3dhr")
+}],
+"loop": true,
+"name": &"flash",
+"speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xsm4k"]
-size = Vector2(13, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej14v"]
+size = Vector2(15.5, 9.5)
 
-[node name="Area2D" type="Area2D" groups=["Player"]]
-script = ExtResource("2_asyhy")
+[node name="Player" type="Area2D" groups=["Player"]]
+script = ExtResource("2_85dhl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_gbv3v")
+sprite_frames = SubResource("SpriteFrames_hnnho")
+animation = &"flash"
 autoplay = "default"
-frame = 1
-frame_progress = 0.55528
 offset = Vector2(-1, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_xsm4k")
+position = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_ej14v")
 
 [node name="ReloadTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
 
+[node name="UnloadPeopleTimer" type="Timer" parent="."]
+wait_time = 0.15
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="UnloadPeopleTimer" to="." method="_on_unload_people_timer_timeout"]

@@ -1,50 +1,49 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk2lfkgucx1hu"]
+[gd_scene load_steps=7 format=3 uid="uid://dxyeu80svpdus"]
 
-[ext_resource type="Texture2D" uid="uid://5pdnyfuiltgb" path="res://player/player_bullet/player_bullet.png" id="1_giebi"]
-[ext_resource type="Script" path="res://player/player_bullet/player_bullet.gd" id="2_ve3ll"]
+[ext_resource type="Texture2D" uid="uid://bo2kxaijs7jem" path="res://player/player_bullet/player_bullet.png" id="1_eb45u"]
+[ext_resource type="Script" path="res://player/player_bullet/player_bullet.gd" id="2_7h0k4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb15n"]
-size = Vector2(15, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3wraq"]
-atlas = ExtResource("1_giebi")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yaxh"]
+atlas = ExtResource("1_eb45u")
 region = Rect2(0, 0, 18, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iwrj1"]
-atlas = ExtResource("1_giebi")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdfa3"]
+atlas = ExtResource("1_eb45u")
 region = Rect2(18, 0, 18, 13)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7j03d"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6xn5"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3wraq")
+"texture": SubResource("AtlasTexture_2yaxh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iwrj1")
+"texture": SubResource("AtlasTexture_sdfa3")
 }],
 "loop": false,
 "name": &"default",
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lqui"]
+size = Vector2(13, 14)
+
 [node name="PlayerBullet" type="Area2D" groups=["PlayerBullet"]]
-z_index = -1
-script = ExtResource("2_ve3ll")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-5.96046e-07, 7.15256e-07)
-scale = Vector2(0.7, 0.7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_sb15n")
+z_index = 1
+script = ExtResource("2_7h0k4")
+bullet_speed = 200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_7j03d")
+sprite_frames = SubResource("SpriteFrames_r6xn5")
 autoplay = "default"
-frame = 1
-frame_progress = 1.0
-offset = Vector2(-0.5, 0)
+offset = Vector2(2.08165e-12, 2.08165e-12)
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_7lqui")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.5, -2.38419e-07)
+scale = Vector2(0.65, 0.7)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
