@@ -1,61 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1updr7kctve3"]
+[gd_scene load_steps=9 format=3 uid="uid://bwrdmf4pwd8nq"]
 
-[ext_resource type="Texture2D" uid="uid://cs3f6yg1d6q5k" path="res://enemies/shark/shark.png" id="1_yr07r"]
-[ext_resource type="Script" path="res://enemies/shark/shark.gd" id="2_lxsvi"]
+[ext_resource type="Texture2D" uid="uid://djm0bc3aikdws" path="res://enemies/shark/shark.png" id="1_yyips"]
+[ext_resource type="Script" path="res://enemies/shark/shark.gd" id="2_xtxda"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jnfs2"]
-atlas = ExtResource("1_yr07r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcjqq"]
+atlas = ExtResource("1_yyips")
 region = Rect2(0, 0, 22, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dcs07"]
-atlas = ExtResource("1_yr07r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8oku"]
+atlas = ExtResource("1_yyips")
 region = Rect2(22, 0, 22, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qi2ra"]
-atlas = ExtResource("1_yr07r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s82dg"]
+atlas = ExtResource("1_yyips")
 region = Rect2(44, 0, 22, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uewje"]
-atlas = ExtResource("1_yr07r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4e3s"]
+atlas = ExtResource("1_yyips")
 region = Rect2(66, 0, 22, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_je0j8"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_5f68b"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jnfs2")
+"texture": SubResource("AtlasTexture_wcjqq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dcs07")
+"texture": SubResource("AtlasTexture_g8oku")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qi2ra")
+"texture": SubResource("AtlasTexture_s82dg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uewje")
+"texture": SubResource("AtlasTexture_y4e3s")
 }],
 "loop": true,
 "name": &"default",
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gron"]
-size = Vector2(17, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmxy2"]
+size = Vector2(16, 8)
 
 [node name="Shark" type="Area2D"]
-script = ExtResource("2_lxsvi")
+script = ExtResource("2_xtxda")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_je0j8")
+sprite_frames = SubResource("SpriteFrames_5f68b")
 autoplay = "default"
+frame = 2
+frame_progress = 0.579729
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_0gron")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 2.38419e-07)
-scale = Vector2(1, 0.4)
+shape = SubResource("RectangleShape2D_kmxy2")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

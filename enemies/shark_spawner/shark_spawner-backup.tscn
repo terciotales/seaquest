@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://clniid367wij"]
+
+[ext_resource type="Script" path="res://enemies/shark_spawner/shark_spawner.gd" id="1_76cpt"]
+
+[node name="SharkSpawner" type="Marker2D"]
+script = ExtResource("1_76cpt")
+min_wait_time = 1.5
+max_wait_time = 4.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

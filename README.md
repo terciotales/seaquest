@@ -1,33 +1,34 @@
-# Seaquest Remasterizado
+# SeaQuest
 
-Este é um projeto de remasterização do clássico jogo Seaquest do Atari, desenvolvido utilizando o engine Godot.
+A remake of the game Sea Quest, following the excellent course at https://www.udemy.com/course/godot-4-retro-remake-design-and-code-a-seaquest-remake/.
 
-## Descrição
+Play me at: https://daneelsan.itch.io/seaquest
 
-Seaquest Remasterizado é uma versão moderna e atualizada do clássico jogo de arcade lançado em 1983 pela Activision para o console Atari 2600. O jogo original colocava os jogadores no controle de um submarino, onde eles tinham que resgatar mergulhadores enquanto evitavam ataques de tubarões e submarinos inimigos.
+![](./screenshots/SeaQuest-demo.gif)
 
-Esta versão remasterizada mantém a essência do jogo original, porém com gráficos aprimorados, jogabilidade mais suave e novos recursos.
+You are a submarine and your goal is to rescue as many people as possible, that is if you manage to avoid the sharks that are looming around.
 
-## Recursos
+Keep in mind your oxygen level, it depletes as you search for people to rescue.
 
-- Gráficos atualizados para uma experiência visual mais imersiva.
-- Jogabilidade aprimorada para uma experiência de jogo mais fluida.
-- Suporte ao teclado para uma jogabilidade flexível.
-- Trilha sonora e efeitos sonoros remasterizados para uma atmosfera envolvente.
+You can replenish the oxygen if you rise to the surface, just don't do it if you have too much oxygen in your tank... or you will explode.
 
-## Como Jogar
+Also, please don't shoot at people, they aren't fond of it. Enjoy!
 
-1. Faça o download dos arquivos do jogo.
-2. Descompacte o arquivo baixado.
-3. Execute o arquivo executável do jogo.
-4. Use as teclas de seta ou WASD para controlar o submarino.
-5. Resgate todos os mergulhadores que puder enquanto evita os ataques dos inimigos.
-6. Sobreviva o maior tempo possível para alcançar a pontuação mais alta.
+Move with ARROW keys.
 
-## Contribuição
+Shoot with SPACE bar.
 
-Contribuições são bem-vindas! Se você gostaria de contribuir com melhorias para o jogo, sinta-se à vontade para fazer um fork do repositório, implementar suas mudanças e enviar um pull request.
+Toggle full screen with the F key.
 
----
+Exit the game with the ESC key. That's it.
 
-Divirta-se jogando Seaquest Remasterizado! Se você tiver alguma dúvida, sugestão ou problema, não hesite em abrir uma issue neste repositório.
+## Links:
+
+-   https://daneelsan.itch.io/seaquest
+-   https://www.udemy.com/course/godot-4-retro-remake-design-and-code-a-seaquest-remake/
+
+## TODO:
+
+-   Increase difficulty when 7 people are rescued
+-   Add more sharks as difficulty increases
+-   Touch pad support?

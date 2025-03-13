@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://t454qvn6785w"]
+
+[ext_resource type="Script" path="res://enemies/shark_spawner/shark_spawner.gd" id="1_76cpt"]
+
+[node name="SharkSpawner" type="Node2D"]
+position = Vector2(0, -50)
+script = ExtResource("1_76cpt")
+
+[node name="LeftSpawner" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="LeftSpawner"]
+position = Vector2(-32, 77)
+
+[node name="2" type="Marker2D" parent="LeftSpawner"]
+position = Vector2(-32, 109)
+
+[node name="3" type="Marker2D" parent="LeftSpawner"]
+position = Vector2(-32, 141)
+
+[node name="4" type="Marker2D" parent="LeftSpawner"]
+position = Vector2(-32, 173)
+
+[node name="RightSpawner" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="RightSpawner"]
+position = Vector2(288, 77)
+
+[node name="2" type="Marker2D" parent="RightSpawner"]
+position = Vector2(288, 109)
+
+[node name="3" type="Marker2D" parent="RightSpawner"]
+position = Vector2(288, 141)
+
+[node name="4" type="Marker2D" parent="RightSpawner"]
+position = Vector2(288, 173)
+
+[node name="SharkSpawnTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[node name="PersonSpawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="SharkSpawnTimer" to="." method="_on_shark_spawn_timer_timeout"]
+[connection signal="timeout" from="PersonSpawnTimer" to="." method="_on_person_spawn_timer_timeout"]

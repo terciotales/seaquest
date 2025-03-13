@@ -1,43 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvl70lv23oyff"]
+[gd_scene load_steps=7 format=3 uid="uid://5xbhp68ieylv"]
 
-[ext_resource type="Texture2D" uid="uid://blmdodl1scpa4" path="res://person/person_swimming.png" id="1_01tl7"]
-[ext_resource type="Script" path="res://person/person.gd" id="1_3ty2u"]
+[ext_resource type="Script" path="res://person/person.gd" id="1_0kioy"]
+[ext_resource type="Texture2D" uid="uid://q2xmqfuweamb" path="res://person/person_swimming.png" id="1_ijgj3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_si75y"]
-atlas = ExtResource("1_01tl7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2n7n"]
+atlas = ExtResource("1_ijgj3")
 region = Rect2(0, 0, 20, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8gkt"]
-atlas = ExtResource("1_01tl7")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7iq2"]
+atlas = ExtResource("1_ijgj3")
 region = Rect2(20, 0, 20, 20)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_c6s5m"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dssh7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_si75y")
+"texture": SubResource("AtlasTexture_c2n7n")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w8gkt")
+"texture": SubResource("AtlasTexture_y7iq2")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0js7"]
-size = Vector2(12, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gp3f4"]
+size = Vector2(13, 9)
 
 [node name="Person" type="Area2D"]
-script = ExtResource("1_3ty2u")
+script = ExtResource("1_0kioy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_c6s5m")
+sprite_frames = SubResource("SpriteFrames_dssh7")
 autoplay = "default"
-frame_progress = 0.607507
+frame_progress = 0.297206
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_a0js7")
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_gp3f4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

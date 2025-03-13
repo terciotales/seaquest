@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://co5mm22h1kij"]
+
+[ext_resource type="FontFile" uid="uid://rosbv1538tlk" path="res://user_interface/fonts/font_2.ttf" id="1_fo7l0"]
+[ext_resource type="Script" path="res://user_interface/point_value_popup/point_value_popup.gd" id="1_l16cg"]
+
+[sub_resource type="Animation" id="Animation_ikr3l"]
+resource_name = "popup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4ipsb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5sgr"]
+_data = {
+"RESET": SubResource("Animation_4ipsb"),
+"popup": SubResource("Animation_ikr3l")
+}
+
+[node name="PointValuePopup" type="Node2D"]
+script = ExtResource("1_l16cg")
+
+[node name="Label" type="Label" parent="."]
+z_index = 5
+offset_left = -12.0
+offset_top = -5.0
+offset_right = 12.0
+offset_bottom = 6.0
+theme_override_colors/font_shadow_color = Color(0.145098, 0.141176, 0.266667, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("1_fo7l0")
+theme_override_font_sizes/font_size = 5
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "popup"
+libraries = {
+"": SubResource("AnimationLibrary_k5sgr")
+}
